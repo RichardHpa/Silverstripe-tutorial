@@ -11,6 +11,11 @@
     "require-dev": {
         "phpunit/phpunit": "^5.7"
     },
+    "autoload": {
+        "psr-4": {
+            "SilverStripe\\Lessons\\": "app/src/"
+        }
+    },
     "extra": {
         "resources-dir": "_resources",
         "project-files-installed": [
