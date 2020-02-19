@@ -1,6 +1,7 @@
 <?php
 namespace SilverStripe\Lessons;
 
+use SilverStripe\Forms\CheckboxSetField;
 use Page;
 
 use SilverStripe\Forms\DateField;
@@ -32,6 +33,10 @@ class ArticlePage extends Page{
         'Brochure',
     ];
 
+    private static $many_many = [
+        'Categories' => ArticleCategory::class
+    ];
+
     //Adds a front end form through the admin
     public function getCMSFields(){
         $fields = parent::getCMSFields();
@@ -50,7 +55,21 @@ class ArticlePage extends Page{
             ->setFolderName('travel-brochures')
             ->getValidator()->setAllowedExtensions(['pdf']);
 
+        $fields->addFieldToTab(
+            'Root.Categories', CheckboxSetField::create(
+                'Categories',
+                'Selected categories',
+                $this->Parent()->Categories()->map('ID', 'Title')
+            ));
+
         return $fields;
+    }
+
+    public function CategoiesList(){
+        if($this->Categories()->exists()) {
+            return implode(',', $this->Categories()->column('Title'));
+        }
+        return null;
     }
 
 
