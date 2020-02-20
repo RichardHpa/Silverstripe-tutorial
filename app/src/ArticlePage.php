@@ -13,6 +13,7 @@ use SilverStripe\Assets\File;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class ArticlePage extends Page{
+
     private static $can_be_root = false;
 
     // Creates a database table when you build it
@@ -35,6 +36,10 @@ class ArticlePage extends Page{
 
     private static $many_many = [
         'Categories' => ArticleCategory::class
+    ];
+
+    private static $has_many = [
+        'Comments' => ArticleComment::class
     ];
 
     //Adds a front end form through the admin
@@ -71,10 +76,5 @@ class ArticlePage extends Page{
         }
         return null;
     }
-
-
-
-
-
 
 }
