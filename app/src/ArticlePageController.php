@@ -25,6 +25,7 @@ class ArticlePageController extends PageController{
                 TextField::create('Name',''),
                 EmailField::create('Email',''),
                 TextareaField::create('Comment','')
+
             ),
             FieldList::create(
                 FormAction::create('handleComment','Post Comment')
@@ -36,12 +37,20 @@ class ArticlePageController extends PageController{
             ->addExtraClass('form-style');
 
         foreach($form->Fields() as $field) {
+            // var_dump( $field->Type() );
             $field->addExtraClass('form-group')
                 ->setAttribute('placeholder', $field->getName().'*');
+
+            if($field->Type() === 'textarea'){
+                $field->setTemplate('MyCustomTextAreaField');
+            } else {
+                $field->setTemplate('MyCustomTextField');
+            }
+
         }
         $data = $this->getRequest()->getSession()->get("FormData.{$form->getName()}.data");
 
-        return $data ? $form->loadDataFrom($data) : $form;
+        return $data ? $form->loadDataFrom($data)>setTemplate('CustomForm') : $form->setTemplate('CustomForm');
     }
 
     public function handleComment($data, $form){
