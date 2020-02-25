@@ -12,4 +12,12 @@ class HomePageController extends PageController{
             ->limit($count);
     }
 
+    public function FeaturedProperties(){
+        return Property::get()
+            ->filter(array(
+                'FeaturedOnHomepage' => true
+            ))
+            ->limit(6);
+    }
+
 }
