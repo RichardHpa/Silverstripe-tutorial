@@ -3,6 +3,9 @@ Name: myproject
 ---
 SilverStripe\Core\Manifest\ModuleManifest:
   project: app
+Silverstripe\SiteConfig\SiteConfig:
+    extensions:
+        - SilverStripe\Lessons\SiteConfigExtension
 
 
 ---
