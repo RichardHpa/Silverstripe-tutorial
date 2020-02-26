@@ -9,7 +9,8 @@
 
 	<!-- Page Title -->
 	<%-- <title>One Ring Rentals - Home</title> --%>
-	$MetaTags
+	$MetaTags(false)
+    <title>One Ring Rentals: $Title</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 

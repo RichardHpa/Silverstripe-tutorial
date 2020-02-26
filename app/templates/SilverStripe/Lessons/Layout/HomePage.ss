@@ -123,7 +123,11 @@
                                     <h3>$Title</h3>
                                     <span class="location">$Region.Title</span>
                                 </a>
-                                $PrimaryPhoto.Fill(220,194)
+                                <% if $PrimaryPhoto %>
+                                    $PrimaryPhoto.Fill(220,194)
+                                <% else %>
+                                    <img src="http://placehold.it/300x200" class="img-fluid" alt="">
+                                <% end_if %>
                             </div>
                             <div class="price">
                                 <span>$PricePerNight.Nice</span><p>per night<p>
@@ -199,7 +203,11 @@
                                         <a href="$Link">
                                             <span class="btn btn-default"> Read More</span>
                                         </a>
-                                        $Photo.Fit(220,148)
+                                        <% if $Photo %>
+                                            $Photo.Fit(220,148)
+                                        <% else %>
+                                            <img src="http://placehold.it/300x200" class="img-fluid" alt="">
+                                        <% end_if %>
                                     </div>
                                     <div class="tag"><i class="fa fa-file-text"></i></div>
                                     <div class="info-blog">
